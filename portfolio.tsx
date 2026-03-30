@@ -95,28 +95,44 @@ export default function Component() {
 
   const projects = [
     {
-      title: "Food Rescue Network",
+      title: "Food Rescue Chain",
       description:
-        "Full-stack MERN platform connecting food donors with NGOs to reduce food waste. Features live geo-matching, real-time notifications, atomic claim locking, QR-based pickup verification, and an impact analytics dashboard.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "REST APIs", "MapLibre"],
+        "Production-grade, real-time food redistribution platform connecting surplus food donors with NGOs within a 5km radius. Features live geo-matching via Leaflet.js, instant Socket.io notifications, role-based verification flows, and atomic claim locking.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Leaflet.js", "JWT", "Cloudinary"],
       image: "/images/food-rescue-network.png",
-      github: "https://github.com/dipakpote",
+      github: "https://github.com/Dipak-coder-06/Food-Rescue-Chain",
     },
     {
-      title: "Eduvista - Collaborative Learning Platform",
+      title: "Scan My Notes — AI Knowledge Retrieval",
       description:
-        "Productivity platform supporting collaborative learning with JWT-based authentication, Pomodoro-based study tracking, collaborative workspaces, and real-time progress analytics.",
-      tech: ["React", "Node.js", "Express", "JWT Auth", "MongoDB"],
-      image: "/images/eduvista-platform.png",
-      github: "https://github.com/dipakpote",
-    },
-    {
-      title: "Scan My Notes - AI Knowledge Retrieval",
-      description:
-        "LLM-powered application enabling users to query handwritten documents using OCR, vector search, and RAG architecture. Delivers accurate, source-cited answers from personal notes and PDFs.",
-      tech: ["LLMs", "RAG", "Vector Databases", "Python", "FastAPI", "EasyOCR"],
+        "Privacy-first document intelligence system for handwritten and typed notes. Implements a full RAG pipeline with Hybrid Search (BM25 + Semantic + RRF), spatial citations, 0–100% confidence scoring, hallucination suppression, MCQ quiz generation, and PDF export.",
+      tech: ["Python", "Streamlit", "Ollama", "ChromaDB", "Google Vision OCR", "RAG", "BM25"],
       image: "/images/scan-my-notes.png",
-      github: "https://github.com/dipakpote",
+      github: "https://github.com/Dipak-coder-06/Scan-my-notes",
+    },
+    {
+      title: "AI Financial Manager",
+      description:
+        "AI-powered financial analysis dashboard delivering high-impact insights using Google Gemini 2.0 Flash. Features a composite 0–100 health score, automated risk quadrant categorization, interactive Plotly charts for budget tracking, and instant PDF report generation.",
+      tech: ["Python", "Streamlit", "Google Gemini 2.0", "Plotly", "FPDF2"],
+      image: "/images/ai-financial-manager.png",
+      github: "https://github.com/Dipak-coder-06/AI-Financial-Manager-",
+    },
+    {
+      title: "Diplomate — EdTech Platform",
+      description:
+        "Full-stack MERN platform for educators to upload videos, sell courses, and manage lectures — with an integrated AI chatbot for instant student query resolution and seamless course monetization.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "AI Chatbot", "JWT"],
+      image: "/images/diplomate-platform.png",
+      github: "https://github.com/Dipak-coder-06/Diplomate",
+    },
+    {
+      title: "Study Planner — IV Semester",
+      description:
+        "Smart semester study planner tailored for college exam preparation. Helps students organize subjects, track study sessions, and plan revision schedules efficiently with a clean, intuitive interface.",
+      tech: ["TypeScript", "Next.js", "React", "Tailwind CSS"],
+      image: "/images/study-planner.png",
+      github: "https://github.com/Dipak-coder-06/StudyPlannerIVsem",
     },
   ]
 
@@ -679,7 +695,7 @@ export default function Component() {
 
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {[
-                  { value: "3+", label: "Projects Built" },
+                  { value: "5+", label: "Projects Built" },
                   { value: "12+", label: "Technical Skills" },
                 ].map((stat, i) => (
                   <motion.div
@@ -888,7 +904,7 @@ export default function Component() {
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
