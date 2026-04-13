@@ -226,7 +226,7 @@ export default function Component() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] overflow-x-hidden">
       {/* Custom Cursor */}
       {isMounted && (
         <motion.div
@@ -250,7 +250,7 @@ export default function Component() {
         animate={{ y: 0 }}
         className="fixed top-0 w-full z-40 bg-black/30 backdrop-blur-xl border-b border-white/10"
       >
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -349,7 +349,7 @@ export default function Component() {
       <section
         id="home"
         ref={sectionRefs.home}
-        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12"
       >
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.15),rgba(0,0,0,0)_50%)]" />
@@ -381,96 +381,14 @@ export default function Component() {
           </div>
         )}
 
-        <div className="text-center z-10 px-4">
-          <motion.div className="mb-8">
-            <div className="relative w-60 h-60 mx-auto mb-6">
-              {/* Animated rings */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-purple-500/30"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-2 rounded-full border-2 border-cyan-500/30"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-4 rounded-full border-2 border-purple-400/20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              />
+        <div className="text-center z-10 px-4 w-full mx-auto">
 
-              {/* Profile image container */}
-              <motion.div
-                className="absolute inset-6 rounded-full bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 p-1"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(147,51,234,0.3),rgba(0,0,0,0)_70%)]" />
-                  <img
-                    src="/images/profile.jpeg"
-                    alt="Dipak Pote"
-                    className="w-full h-full object-cover rounded-full relative z-10"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Floating particles around profile */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full"
-                  style={{
-                    top: `${20 + Math.sin((i * Math.PI) / 4) * 60}%`,
-                    left: `${20 + Math.cos((i * Math.PI) / 4) * 60}%`,
-                  }}
-                  animate={{ y: [0, -10, 0], opacity: [0.3, 1, 0.3] }}
-                  transition={{
-                    duration: 2 + i * 0.2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    delay: i * 0.3,
-                  }}
-                />
-              ))}
-
-              {/* Glow effect */}
-              <div className="absolute -inset-8 rounded-full bg-gradient-to-r from-purple-500/20 via-cyan-400/20 to-purple-500/20 blur-xl animate-pulse" />
-            </div>
-          </motion.div>
-
-          {/* Animated text for "Aspiring" */}
-          <div className="overflow-hidden mb-2">
-            <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white inline-block"
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              onMouseEnter={enterText}
-              onMouseLeave={leaveText}
-            >
-              {"Aspiring".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  custom={index}
-                  variants={letterVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="inline-block"
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </motion.h1>
-          </div>
 
           {/* Animated text for "Software Developer" */}
-          <div className="overflow-hidden mb-6">
+          <div className="[overflow-y:hidden] mb-6">
             <motion.h1
-              className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent inline-block"
+              className="font-bold bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent inline-block whitespace-nowrap"
+              style={{ fontSize: "clamp(1.4rem, 7vw, 5rem)" }}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -492,8 +410,9 @@ export default function Component() {
             </motion.h1>
           </div>
 
+
           <motion.p
-            className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto"
+            className="text-sm sm:text-base md:text-xl text-white/80 mb-4 max-w-3xl mx-auto px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
@@ -514,7 +433,7 @@ export default function Component() {
           </motion.p>
 
           <motion.p
-            className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto"
+            className="text-sm sm:text-base md:text-xl text-white/80 mb-6 max-w-3xl mx-auto px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
@@ -542,7 +461,7 @@ export default function Component() {
             transition={{ duration: 0.8, delay: 2.0 }}
             className="mb-8"
           >
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm">
               {["Python", "JavaScript", "React", "Node.js", "MongoDB", "Docker", "LLMs", "FastAPI"].map((tech, index) => (
                 <motion.span
                   key={tech}
@@ -620,7 +539,7 @@ export default function Component() {
       </section>
 
       {/* About Section */}
-      <section id="about" ref={sectionRefs.about} className="py-32 px-4 relative">
+      <section id="about" ref={sectionRefs.about} className="py-16 md:py-32 px-4 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(147,51,234,0.15),rgba(0,0,0,0)_50%)]" />
         </div>
@@ -633,7 +552,7 @@ export default function Component() {
             className="text-center mb-16"
           >
             <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-3xl md:text-5xl font-bold text-white mb-4"
               onMouseEnter={enterText}
               onMouseLeave={leaveText}
             >
@@ -642,7 +561,7 @@ export default function Component() {
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto"></div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -701,7 +620,7 @@ export default function Component() {
                   <motion.div
                     key={i}
                     whileHover={{ y: -5 }}
-                    className="text-center p-6 bg-white/5 rounded-lg border border-white/10 relative group"
+                    className="text-center p-4 bg-white/5 rounded-lg border border-white/10 relative group"
                   >
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur opacity-0 group-hover:opacity-30 transition duration-300"></div>
                     <div className="relative">
@@ -722,18 +641,18 @@ export default function Component() {
               className="space-y-8"
             >
               <div className="relative" onMouseEnter={enterText} onMouseLeave={leaveText}>
-                <p className="text-lg text-white/80 leading-relaxed">
-                  I'm an aspiring software developer with hands-on experience in full-stack development and backend engineering. Currently pursuing B.Tech in Information Technology at Vishwakarma Institute of Technology, I've completed internships and built several production-ready applications.
+                <p className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed">
+                  I'm a software developer with hands-on experience in full-stack development and backend engineering. Currently pursuing B.Tech in Information Technology at Vishwakarma Institute of Technology, I've completed internships and built several production-ready applications.
                 </p>
 
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-purple-500 to-transparent my-6 opacity-50"></div>
 
-                <p className="text-lg text-white/80 leading-relaxed">
+                <p className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed">
                   My expertise includes Python, JavaScript, MERN stack, REST APIs, Docker containerization, and AI systems using LLMs and RAG. I'm passionate about designing scalable backend systems, solving real-world engineering problems, and continuously learning new technologies.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-3 md:gap-6">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
                   className="p-5 rounded-lg bg-gradient-to-br from-purple-900/40 to-cyan-900/40 backdrop-blur-sm border border-white/5"
@@ -760,7 +679,7 @@ export default function Component() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" ref={sectionRefs.skills} className="py-32 px-4 relative">
+      <section id="skills" ref={sectionRefs.skills} className="py-16 md:py-32 px-4 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.15),rgba(0,0,0,0)_50%)]" />
         </div>
@@ -773,7 +692,7 @@ export default function Component() {
             className="text-center mb-16"
           >
             <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-3xl md:text-5xl font-bold text-white mb-4"
               onMouseEnter={enterText}
               onMouseLeave={leaveText}
             >
@@ -785,7 +704,7 @@ export default function Component() {
           <div className="mb-20">
             <Tabs defaultValue="all" className="w-full">
               <div className="flex justify-center mb-8">
-                <TabsList className="bg-white/5 backdrop-blur-md border border-white/10">
+                <TabsList className="bg-white/5 backdrop-blur-md border border-white/10 flex-wrap h-auto">
                   {[
                     { value: "all", label: "All Skills" },
                     { value: "frontend", label: "Frontend" },
@@ -812,7 +731,7 @@ export default function Component() {
                 { value: "tools", filter: (s: typeof skills[0]) => s.category === "Tools" || s.category === "AI" },
               ].map(({ value, filter }) => (
                 <TabsContent key={value} value={value} className="mt-0">
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {skills.filter(filter).map((skill, index) => (
                       <motion.div
                         key={index}
@@ -820,7 +739,7 @@ export default function Component() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
-                        className="space-y-2"
+                        className="space-y-0 p-3 bg-white/5 rounded-lg border border-white/10"
                       >
                         <div className="flex justify-between items-center">
                           <span className="text-white font-medium">{skill.name}</span>
@@ -831,16 +750,6 @@ export default function Component() {
                             {skill.category}
                           </Badge>
                         </div>
-                        <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
-                          <motion.div
-                            className="h-full bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                          />
-                        </div>
-                        <div className="text-right text-sm text-white/60">{skill.level}%</div>
                       </motion.div>
                     ))}
                   </div>
@@ -849,7 +758,7 @@ export default function Component() {
             </Tabs>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {[
               { icon: Code, title: "Full Stack Development", desc: "End-to-end web applications using MERN stack" },
               { icon: Server, title: "Backend Engineering", desc: "Scalable REST APIs and microservices" },
@@ -882,7 +791,7 @@ export default function Component() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" ref={sectionRefs.projects} className="py-32 px-4 relative">
+      <section id="projects" ref={sectionRefs.projects} className="py-16 md:py-32 px-4 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.15),rgba(0,0,0,0)_50%)]" />
         </div>
@@ -895,7 +804,7 @@ export default function Component() {
             className="text-center mb-16"
           >
             <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-3xl md:text-5xl font-bold text-white mb-4"
               onMouseEnter={enterText}
               onMouseLeave={leaveText}
             >
@@ -904,7 +813,7 @@ export default function Component() {
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto"></div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -917,7 +826,7 @@ export default function Component() {
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
                 <Card className="bg-white/5 border-white/10 backdrop-blur-md overflow-hidden h-full relative flex flex-col">
-                  <div className="relative overflow-hidden h-56">
+                  <div className="relative overflow-hidden h-44 sm:h-56">
                     <motion.img
                       src={project.image}
                       alt={project.title}
@@ -927,12 +836,12 @@ export default function Component() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                      <h3 className="text-base sm:text-xl font-bold text-white">{project.title}</h3>
                     </div>
                   </div>
 
                   <CardContent className="space-y-4 p-6 flex-1 flex flex-col">
-                    <p className="text-white/90 flex-1">{project.description}</p>
+                    <p className="text-white/90 flex-1 text-sm sm:text-base">{project.description}</p>
 
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((tech, techIndex) => (
@@ -965,7 +874,7 @@ export default function Component() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" ref={sectionRefs.contact} className="py-32 px-4 relative">
+      <section id="contact" ref={sectionRefs.contact} className="py-16 md:py-32 px-4 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.15),rgba(0,0,0,0)_50%)]" />
         </div>
@@ -978,19 +887,19 @@ export default function Component() {
             className="text-center mb-16"
           >
             <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-3xl md:text-5xl font-bold text-white mb-4"
               onMouseEnter={enterText}
               onMouseLeave={leaveText}
             >
               Get In Touch
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto"></div>
-            <p className="text-xl text-white/80 mt-6 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-white/80 mt-4 max-w-2xl mx-auto">
               Ready to bring your ideas to life? Let's collaborate and create something amazing together.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1021,7 +930,7 @@ export default function Component() {
               <div className="flex gap-4 pt-4">
                 <motion.a
                   whileHover={{ scale: 1.1, rotate: -5 }}
-                  href="https://www.linkedin.com/in/dipak-pote/"
+                  href="https://www.linkedin.com/in/dipak-pote-9b8930307/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors relative group"
@@ -1033,7 +942,7 @@ export default function Component() {
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1, rotate: 5 }}
-                  href="https://github.com/dipakpote"
+                  href="https://github.com/Dipak-coder-06"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors relative group"
@@ -1055,7 +964,7 @@ export default function Component() {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
               <Card className="bg-white/5 border-white/10 backdrop-blur-md relative">
                 <CardContent className="p-6">
-                  <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); window.open('https://wa.me/919604276698', '_blank'); }}>
                     <div className="relative">
                       <input
                         type="text"
@@ -1115,13 +1024,13 @@ export default function Component() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-4 border-t border-white/10 relative bg-black/40">
+      <footer className="py-10 md:py-16 px-4 border-t border-white/10 relative bg-black/40">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(45,212,191,0.1),rgba(0,0,0,0)_70%)]" />
         </div>
 
         <div className="container mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12">
             <div className="space-y-4">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 p-0.5">
@@ -1181,7 +1090,7 @@ export default function Component() {
               <div className="flex gap-4 mt-4">
                 <motion.a
                   whileHover={{ scale: 1.1, rotate: -5 }}
-                  href="https://www.linkedin.com/in/dipak-pote/"
+                  href="https://www.linkedin.com/in/dipak-pote-9b8930307/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
@@ -1190,7 +1099,7 @@ export default function Component() {
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1, rotate: 5 }}
-                  href="https://github.com/dipakpote"
+                  href="https://github.com/Dipak-coder-06"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"

@@ -6,8 +6,8 @@ const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
-  title: 'Dipak Pote - Aspiring Software Developer',
-  description: 'Aspiring Software Developer specializing in Full-Stack Development, Backend Engineering, and AI-powered applications. MERN Stack, FastAPI, LLMs, RAG systems.',
+  title: 'Dipak Pote - Software Developer',
+  description: 'Software Developer specializing in Full-Stack Development, Backend Engineering, and AI-powered applications. MERN Stack, FastAPI, LLMs, RAG systems.',
   keywords: ['Dipak Pote', 'Software Developer', 'Full Stack', 'MERN', 'Python', 'FastAPI', 'LLM', 'RAG', 'Pune'],
   authors: [{ name: 'Dipak Pote' }],
   icons: {
