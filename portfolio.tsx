@@ -384,6 +384,36 @@ export default function Component() {
         <div className="text-center z-10 px-4 w-full mx-auto">
 
 
+          {/* Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mb-8 relative inline-block"
+          >
+            <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-r from-purple-500 to-cyan-500 shadow-[0_0_30px_rgba(147,51,234,0.3)] group overflow-hidden">
+              <div className="w-full h-full rounded-full overflow-hidden bg-black/50 backdrop-blur-sm border-2 border-white/10 group-hover:border-white/30 transition-all duration-300">
+                <img
+                  src="/Profile_Photo.png"
+                  alt="Dipak Pote"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 blur-xl -z-10"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+            </div>
+          </motion.div>
+
           {/* Animated text for "Software Developer" */}
           <div className="[overflow-y:hidden] mb-6">
             <motion.h1
@@ -745,7 +775,7 @@ export default function Component() {
                           <span className="text-white font-medium">{skill.name}</span>
                           <Badge
                             variant="secondary"
-                            className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white/80 border-0"
+                            className="bg-gradient-to-r from-purple-400 to-cyan-400 text-zinc-900 border-0 font-bold"
                           >
                             {skill.category}
                           </Badge>
@@ -848,7 +878,7 @@ export default function Component() {
                         <Badge
                           key={techIndex}
                           variant="secondary"
-                          className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white border-0 font-medium"
+                          className="bg-gradient-to-r from-purple-400 to-cyan-400 text-zinc-900 border-0 font-bold"
                         >
                           {tech}
                         </Badge>
